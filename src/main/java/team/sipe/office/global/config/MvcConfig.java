@@ -82,7 +82,8 @@ class AuthenticationFilter implements Filter {
     private static final List<String> ALLOWED_API_PATHS = List.of(
             "/api/admin/auth/login",
             "/swagger-ui/",
-            "/v3/api-docs/"
+            "/v3/api-docs/",
+            "/view"
     );
 
     @Override

@@ -21,9 +21,9 @@ public class AttendanceReadService {
 
     public List<PhaseDto> findPhases(PhaseReadCommand cmd) {
         return List.of(
-                new PhaseDto(1, LocalDate.now().minusWeeks(1)),
+                new PhaseDto(1, LocalDate.now()),
                 new PhaseDto(2, LocalDate.now()),
-                new PhaseDto(3, LocalDate.now().plusWeeks(1))
+                new PhaseDto(3, LocalDate.now())
         );
     }
 

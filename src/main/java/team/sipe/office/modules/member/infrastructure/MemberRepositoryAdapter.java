@@ -8,6 +8,8 @@ import team.sipe.office.modules.member.domain.MemberRepository;
 import team.sipe.office.modules.member.infrastructure.mapper.MemberDomainEntityMapper;
 import team.sipe.office.modules.member.infrastructure.persistence.MemberEntityRepository;
 
+import java.util.Optional;
+
 @Component
 @RequiredArgsConstructor
 public class MemberRepositoryAdapter implements MemberRepository {
@@ -24,5 +26,11 @@ public class MemberRepositoryAdapter implements MemberRepository {
     @Transactional
     public void save(Member member) {
         memberEntityRepository.save(memberDomainEntityMapper.toEntity(member));
+    }
+
+    @Override
+    public Optional<Member> findByNameAndPhone(String name, String phone) {
+        return memberEntityRepository.findMemberEntitiesByNameAndPhone(name, phone)
+                .map(memberDomainEntityMapper::toDomain);
     }
 }

@@ -12,7 +12,9 @@ import java.time.LocalTime;
 @Entity
 @IdClass(AttendanceCriteriaId.class)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name = "attendance_criteria")
+@Table(name = "attendance_criteria", indexes = {
+        @Index(name = "idx_attendance_criteria", columnList = "term, phase")
+})
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AttendanceCriteriaEntity extends BaseTimeEntity {

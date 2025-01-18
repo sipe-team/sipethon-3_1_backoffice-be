@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>출석 제출</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #343a40;
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        label {
+            font-size: 1em;
+            color: #495057;
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.8em;
+            margin-bottom: 1em;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.8em;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            form {
+                padding: 1.5em;
+            }
+
+            input[type="text"], button {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2em;
+            }
+
+            form {
+                padding: 1em;
+            }
+
+            input[type="text"], button {
+                font-size: 0.8em;
+                padding: 0.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>출석</h1>
+<form action="/view/attendance/submit" method="post">
+    <!-- 이름 입력 -->
+    <label for="name">이름:</label>
+    <input type="text" id="name" name="name" placeholder="홍길동" required>
+
+    <!-- 전화번호 입력 -->
+    <label for="phoneNumber">전화번호:</label>
+    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="010-1234-5678" required>
+
+    <!-- 숨겨진 필드: 학기 -->
+    <input type="hidden" id="term" name="term" th:value="${term}">
+
+    <!-- 숨겨진 필드: 단계 -->
+    <input type="hidden" id="phase" name="phase" th:value="${phase}">
+
+    <button type="submit">제출</button>
+</form>
+</body>
+</html>

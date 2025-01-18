@@ -10,15 +10,15 @@ import java.time.LocalDateTime;
 @Getter
 public class QrCodeCreateRequest {
 
-    @Schema(description = "기수", example = "3")
+    @Schema(description = "기수", example = "1")
     private int term;
     @Schema(description = "회차", example = "1")
     private int phase;
-    @Schema(description = "시작 시간", example = "2021-09-01T09:00:00")
+    @Schema(description = "시작 시간", example = "2025-01-18T09:00:00")
     private LocalDateTime startTime;
-    @Schema(description = "지각 시간", example = "2021-09-01T09:10:00")
+    @Schema(description = "지각 시간", example = "2025-01-19T09:00:00")
     private LocalDateTime lateTime;
-    @Schema(description = "결석 시간", example = "2021-09-01T09:20:00")
+    @Schema(description = "결석 시간", example = "2025-01-20T09:00:00")
     private LocalDateTime absenceTime;
 
     public AttendanceCriteriaUpdateCommand toCommand() {

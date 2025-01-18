@@ -5,7 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class AttendanceUrlGenerator {
 
-    private static final String BASE_URL = "http://localhost:8080/attendanceCheck";
+    //TODO change this to the real URL
+    private static final String BASE_URL = "https://backoffice.conects.com/view/attendanceCheck";
 
     public String generateUrl(String term, String phase) {
         return BASE_URL + "?term=" + term + "&phase=" + phase;

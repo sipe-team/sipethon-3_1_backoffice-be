@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>출석 결과</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #28a745;
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #495057;
+            margin: 0.5em 0;
+        }
+
+        strong {
+            color: #343a40;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>출석 결과</h1>
+<p>출석이 성공적으로 제출되었습니다!</p>
+<p><strong>이름:</strong> <span th:text="${name}"></span></p>
+<p><strong>전화번호:</strong> <span th:text="${phoneNumber}"></span></p>
+<p><strong>출석 시간:</strong> <span th:text="${submitTime}"></span></p>
+</body>
+</html>
