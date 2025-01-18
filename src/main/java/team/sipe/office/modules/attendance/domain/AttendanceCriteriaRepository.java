@@ -6,4 +6,6 @@ import java.util.Optional;
 
 public interface AttendanceCriteriaRepository {
     Optional<AttendanceCriteria> findById(AttendanceCriteriaId id);
+
+    AttendanceCriteria updateCriteria(AttendanceCriteria criteria);
 }

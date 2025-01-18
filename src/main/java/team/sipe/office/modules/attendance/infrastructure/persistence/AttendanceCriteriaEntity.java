@@ -6,6 +6,7 @@ import org.hibernate.annotations.Comment;
 import team.sipe.office.global.jpa.BaseTimeEntity;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Entity
@@ -32,11 +33,11 @@ public class AttendanceCriteriaEntity extends BaseTimeEntity {
     @Column(name = "start_time", nullable = false)
     private LocalDateTime startTime;
 
-    @Comment("지각 기준")
-    @Column(name = "late_minute", nullable = false)
-    private Integer lateMinute;
+    @Comment("지각 시간")
+    @Column(name = "late_time", nullable = false)
+    private LocalDateTime lateTime;
 
-    @Comment("결석 기준")
-    @Column(name = "absence_minute", nullable = false)
-    private Integer absenceMinute;
+    @Comment("결석 시간")
+    @Column(name = "absence_time", nullable = false)
+    private LocalDateTime absenceTime;
 }

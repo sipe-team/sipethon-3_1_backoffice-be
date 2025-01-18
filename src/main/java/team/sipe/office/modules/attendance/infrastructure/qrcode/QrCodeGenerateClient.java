@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface QrCodeGenerateClient {
 
     @GetMapping
-    byte[] generateQrCode(@RequestParam("size") String size, @RequestParam("data") String data);
+    byte[] generateQrCode(@RequestParam("size") String size, @RequestParam("data") String url);
 }

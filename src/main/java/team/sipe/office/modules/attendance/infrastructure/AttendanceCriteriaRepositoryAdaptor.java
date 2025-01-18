@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import team.sipe.office.modules.attendance.domain.AttendanceCriteria;
 import team.sipe.office.modules.attendance.domain.AttendanceCriteriaRepository;
 import team.sipe.office.modules.attendance.infrastructure.mapper.AttendanceCriteriaEntityMapper;
+import team.sipe.office.modules.attendance.infrastructure.persistence.AttendanceCriteriaEntity;
 import team.sipe.office.modules.attendance.infrastructure.persistence.AttendanceCriteriaEntityRepository;
 import team.sipe.office.modules.attendance.infrastructure.persistence.AttendanceCriteriaId;
 
@@ -20,5 +21,12 @@ public class AttendanceCriteriaRepositoryAdaptor implements AttendanceCriteriaRe
     @Override
     public Optional<AttendanceCriteria> findById(AttendanceCriteriaId id) {
         return attendanceCriteriaEntityRepository.findById(id).map(attendanceCriteriaEntityMapper::toDomain);
+    }
+
+    @Override
+    public AttendanceCriteria updateCriteria(AttendanceCriteria criteria) {
+        AttendanceCriteriaEntity save = attendanceCriteriaEntityRepository.save(attendanceCriteriaEntityMapper.toEntity(criteria));
+
+        return attendanceCriteriaEntityMapper.toDomain(save);
     }
 }

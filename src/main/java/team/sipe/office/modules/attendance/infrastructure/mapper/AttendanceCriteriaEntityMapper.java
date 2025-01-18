@@ -9,12 +9,12 @@ import team.sipe.office.modules.attendance.infrastructure.persistence.Attendance
 public class AttendanceCriteriaEntityMapper implements DomainEntityMapper<AttendanceCriteria, AttendanceCriteriaEntity> {
     @Override
     public AttendanceCriteria toDomain(final AttendanceCriteriaEntity attendanceCriteriaEntity) {
-        return new AttendanceCriteria(
+        return AttendanceCriteria.of(
                 attendanceCriteriaEntity.getTerm(),
                 attendanceCriteriaEntity.getPhase(),
                 attendanceCriteriaEntity.getStartTime(),
-                attendanceCriteriaEntity.getLateMinute(),
-                attendanceCriteriaEntity.getAbsenceMinute()
+                attendanceCriteriaEntity.getLateTime(),
+                attendanceCriteriaEntity.getAbsenceTime()
         );
     }
 
@@ -24,8 +24,8 @@ public class AttendanceCriteriaEntityMapper implements DomainEntityMapper<Attend
           attendanceCriteria.getTerm(),
           attendanceCriteria.getPhase(),
           attendanceCriteria.getStartTime(),
-          attendanceCriteria.getLateMinute(),
-          attendanceCriteria.getAbsenceMinute()
+          attendanceCriteria.getLateTime(),
+          attendanceCriteria.getAbsenceTime()
         );
     }
 }
