@@ -79,12 +79,16 @@ class ErrorHandlingFilter implements Filter {
 
 class AuthenticationFilter implements Filter {
 
-    private static final List<String> ALLOWED_API_PATHS = List.of("/api/admin/auth/login");
+    private static final List<String> ALLOWED_API_PATHS = List.of(
+            "/api/admin/auth/login",
+            "/swagger-ui/",
+            "/v3/api-docs/"
+    );
 
     @Override
     public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, final FilterChain filterChain) throws IOException, ServletException {
         final HttpServletRequest request = (HttpServletRequest) servletRequest;
-        if (ALLOWED_API_PATHS.contains(request.getRequestURI())) {
+        if (ALLOWED_API_PATHS.stream().anyMatch(request.getRequestURI()::contains)) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
