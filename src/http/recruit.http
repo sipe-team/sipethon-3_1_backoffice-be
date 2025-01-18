@@ -1,0 +1,44 @@
+### 리쿠르트 등록
+POST http://localhost:8080/api/recruit/requirement
+Content-Type: application/json
+
+{
+  "term": 3,
+  "requirement": "기술 트렌드에 관심있고 성장을 추구하는 열정적인 개발자",
+  "descriptions": [
+    "격주 토요일 오후 2시 ~ 6시에 진행되는 정규 활동에 성실하게 참여할 수 있는",
+    "자신의 지식과 경험을 다른 구성원들과 적극적으로 공유하고 소통할 수 있는",
+    "다양한 경험을 가진 사람들과 폭넓고 깊이 있는 대화를 나누고 싶은"
+  ]
+}
+
+> {%
+    client.test("SignIn Or Login", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.contentType.mimeType === "application/json", "Expected 'application/json'");
+    });
+    client.global.set("seq", response.body.seq)
+%}
+
+### 리쿠르트 조회
+GET http://localhost:8080/api/recruit/requirement/3
+Content-Type: application/json
+
+### 리쿠르트 수정
+PUT http://localhost:8080/api/recruit/requirement/{{seq}}
+Content-Type: application/json
+
+
+{
+  "term": 2,
+  "requirement": "기술 트렌드에 관심있고 성장을 추구하는 열정적인 개발자",
+  "descriptions": [
+    "격주 토요일 오후 2시 ~ 6시에 진행되는 정규 활동에 성실하게 참여할 수 있는",
+    "자신의 지식과 경험을 다른 구성원들과 적극적으로 공유하고 소통할 수 있는",
+    "다양한 경험을 가진 사람들과 폭넓고 깊이 있는 대화를 나누고 싶은"
+  ]
+}
+
+### 리쿠르트 삭제
+DELETE http://localhost:8080/api/recruit/requirement/{{seq}}
+Content-Type: application/json
