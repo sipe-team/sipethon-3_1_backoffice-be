@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,6 +56,7 @@ public class MvcConfig implements WebMvcConfigurer {
 }
 
 class ErrorHandlingFilter implements Filter {
+    private static final Logger logger = LoggerFactory.getLogger(ErrorHandlingFilter.class);
 
     private final ObjectMapper objectMapper;
 
@@ -66,6 +69,7 @@ class ErrorHandlingFilter implements Filter {
         try {
             filterChain.doFilter(servletRequest, servletResponse);
         } catch (Exception e) {
+            logger.error("Error occurred error = {}, e.trace", e, e.getStackTrace());
             final ErrorCode errorCode = errorCode(e);
             final ApiExceptionResponse apiExceptionResponse = new ApiExceptionResponse(
                     errorCode.errorCode(),

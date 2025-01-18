@@ -10,8 +10,11 @@ import javax.naming.AuthenticationException;
 @RestControllerAdvice
 public class ApiExceptionHandler {
 
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(ApiExceptionHandler.class);
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiExceptionResponse> handleException(Exception e) {
+        logger.error("Error occurred error = {}, e.trace", e, e.getStackTrace());
         final ErrorCode errorCode = switch (e) {
             case AuthenticationException ignored -> ErrorCode.ADMIN_AUTHENTICATION_FAILED;
             default -> ErrorCode.INTERNAL_SERVER_ERROR;
