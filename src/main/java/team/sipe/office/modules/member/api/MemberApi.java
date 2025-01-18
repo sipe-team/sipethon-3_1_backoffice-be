@@ -7,14 +7,19 @@ import team.sipe.office.modules.member.api.dto.request.CreateMemberRequest;
 import team.sipe.office.modules.member.api.dto.request.DeleteMemberRequest;
 import team.sipe.office.modules.member.api.dto.request.UpdateMemberRequest;
 import team.sipe.office.modules.member.api.dto.view.MemberDetailView;
+import team.sipe.office.modules.member.api.dto.view.MemberView;
 import team.sipe.office.modules.member.application.MemberService;
 import team.sipe.office.modules.member.domain.Member;
+import team.sipe.office.modules.member.infrastructure.MemberDao;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class MemberApi {
     private final MemberService memberService;
+    private final MemberDao memberDao;
 
     @PostMapping("/members")
     public ResponseEntity<Void> createMember(@RequestBody CreateMemberRequest request) {
@@ -23,15 +28,12 @@ public class MemberApi {
                 .build();
     }
 
-//    @GetMapping("/members")
-//    public ResponseEntity<List<MemberView>> getMemberList(@RequestParam(value="term", required = true) Long term,
-//                                                          @RequestParam(value="name", required = false) String name) {
-//        List<Member> memberList = memberService.getMemberList(term, name);
-//        return ResponseEntity.ok(memberList.stream()
-//                                           .map(MemberView::new)
-//                                           .toList())
-//                             .build();
-//    }
+    @GetMapping("/members")
+    public ResponseEntity<List<MemberView>> getMemberList(@RequestParam(value = "term", required = true) Long term,
+                                                          @RequestParam(value = "name", required = false) String name) {
+        List<MemberView> memberList = memberDao.getMemberList(term, name);
+        return ResponseEntity.ok(memberList);
+    }
 
     @GetMapping("/members/{memberId}")
     public ResponseEntity<MemberDetailView> getMember(@PathVariable("memberId") Long memberId) {
