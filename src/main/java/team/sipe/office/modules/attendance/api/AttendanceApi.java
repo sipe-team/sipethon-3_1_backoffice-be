@@ -17,6 +17,7 @@ import team.sipe.office.modules.attendance.application.dto.PointsDto;
 
 import java.util.List;
 
+@Tag(name = "출석")
 @RestController
 @RequestMapping("/api/attendance")
 @RequiredArgsConstructor
