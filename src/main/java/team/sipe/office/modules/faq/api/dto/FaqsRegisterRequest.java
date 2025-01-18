@@ -19,11 +19,12 @@ public record FaqsRegisterRequest(
 record FaqRegisterRequest(
         @JsonInclude(JsonInclude.Include.NON_NULL)
         Long seq,
+        long term,
         String question,
         String answer
 ) {
 
     public FaqRegisterCommand toCommand() {
-        return new FaqRegisterCommand(seq, question, answer);
+        return new FaqRegisterCommand(seq, term, question, answer);
     }
 }

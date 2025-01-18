@@ -12,6 +12,10 @@ public class FaqEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
 
+    @Comment("기간")
+    @Column(name = "term", nullable = false)
+    private long term;
+
     @Comment("질문")
     @Column(name = "question", nullable = false)
     private String question;
@@ -23,8 +27,9 @@ public class FaqEntity {
     public FaqEntity() {
     }
 
-    public FaqEntity(final Long seq, final String question, final String answer) {
+    public FaqEntity(final Long seq, final long term, final String question, final String answer) {
         this.seq = seq;
+        this.term = term;
         this.question = question;
         this.answer = answer;
     }
@@ -35,6 +40,14 @@ public class FaqEntity {
 
     public void setSeq(final Long seq) {
         this.seq = seq;
+    }
+
+    public long getTerm() {
+        return term;
+    }
+
+    public void setTerm(final long term) {
+        this.term = term;
     }
 
     public String getQuestion() {
