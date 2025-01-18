@@ -28,10 +28,12 @@ public class FaqApi {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping
-    public ResponseEntity<FaqsFindAllResponse> list() {
-        final FaqsFindAllResponse faqsFindAllResponse = new FaqsFindAllResponse(faqDao.findAll().stream()
-                .map(it -> new FaqFindAllResponse(it.seq(), it.question(), it.answer()))
+    @GetMapping("/{{term}}")
+    public ResponseEntity<FaqsFindAllResponse> list(
+            @PathVariable("term") final long term
+    ) {
+        final FaqsFindAllResponse faqsFindAllResponse = new FaqsFindAllResponse(faqDao.findAll(term).stream()
+                .map(it -> new FaqFindAllResponse(it.seq(), it.term(), it.question(), it.answer()))
                 .toList());
         return ResponseEntity.ok().body(faqsFindAllResponse);
     }

@@ -21,9 +21,9 @@ public class FaqDao {
     }
 
     @Transactional(transactionManager = "transactionManager", readOnly = true)
-    public List<FaqsInfo> findAll() {
-        final SqlParameterSource namedParameters = new MapSqlParameterSource();
-        final String query = "SELECT * FROM faqs";
+    public List<FaqsInfo> findAll(final long term) {
+        final SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("term", term);
+        final String query = "SELECT * FROM faqs WHERE term = :term";
         return namedParameterJdbcTemplate.query(query, namedParameters, new FaqsInfosMapper());
     }
 }

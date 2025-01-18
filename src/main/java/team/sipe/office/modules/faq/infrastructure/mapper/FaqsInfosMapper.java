@@ -12,6 +12,7 @@ public class FaqsInfosMapper implements RowMapper<FaqsInfo> {
     public FaqsInfo mapRow(final ResultSet rs, final int rowNum) throws SQLException {
         return new FaqsInfo(
                 rs.getLong("seq"),
+                rs.getLong("term"),
                 rs.getString("question"),
                 rs.getString("answer")
         );

@@ -5,15 +5,17 @@ import java.util.Objects;
 public class Faq {
 
     private Long seq;
+    private long term;
     private String question;
     private String answer;
 
-    public static Faq init(final String question, final String answer) {
-        return new Faq(null, question, answer);
+    public static Faq init(final long term, final String question, final String answer) {
+        return new Faq(null, term, question, answer);
     }
 
-    public Faq(final Long seq, final String question, final String answer) {
+    public Faq(final Long seq, final long term, final String question, final String answer) {
         this.seq = seq;
+        this.term = term;
         this.question = question;
         this.answer = answer;
     }
@@ -24,6 +26,14 @@ public class Faq {
 
     public void setSeq(final Long seq) {
         this.seq = seq;
+    }
+
+    public long getTerm() {
+        return term;
+    }
+
+    public void setTerm(final long term) {
+        this.term = term;
     }
 
     public String getQuestion() {

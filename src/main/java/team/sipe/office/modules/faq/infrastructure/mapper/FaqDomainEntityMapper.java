@@ -9,11 +9,11 @@ import team.sipe.office.modules.faq.infrastructure.persistence.FaqEntity;
 public class FaqDomainEntityMapper implements DomainEntityMapper<Faq, FaqEntity> {
     @Override
     public Faq toDomain(final FaqEntity faqEntity) {
-        return new Faq(faqEntity.getSeq(), faqEntity.getQuestion(), faqEntity.getAnswer());
+        return new Faq(faqEntity.getSeq(), faqEntity.getTerm(), faqEntity.getQuestion(), faqEntity.getAnswer());
     }
 
     @Override
     public FaqEntity toEntity(final Faq faq) {
-        return new FaqEntity(faq.getSeq(), faq.getQuestion(), faq.getAnswer());
+        return new FaqEntity(faq.getSeq(), faq.getTerm(), faq.getQuestion(), faq.getAnswer());
     }
 }

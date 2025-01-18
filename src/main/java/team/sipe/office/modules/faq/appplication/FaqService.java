@@ -28,7 +28,7 @@ public class FaqService {
         return command.faqCommands()
                 .stream()
                 .filter(it -> Objects.isNull(it.seq()))
-                .map(it -> Faq.init(it.question(), it.answer()))
+                .map(it -> Faq.init(it.term(), it.question(), it.answer()))
                 .collect(Collectors.toList());
     }
 
@@ -36,7 +36,7 @@ public class FaqService {
         return command.faqCommands()
                 .stream()
                 .filter(it -> Objects.nonNull(it.seq()))
-                .map(it -> new Faq(it.seq(), it.question(), it.answer()))
+                .map(it -> new Faq(it.seq(), it.term(), it.question(), it.answer()))
                 .collect(Collectors.toList());
     }
 }
