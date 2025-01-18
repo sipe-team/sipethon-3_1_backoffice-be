@@ -30,6 +30,14 @@ public class AdminAuthApi {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(
+            final HttpSession httpSession
+    ) {
+        httpSession.removeAttribute("id");
+        return ResponseEntity.ok().build();
+    }
+
     private void refreshSession(HttpSession httpSession, String adminId) {
         final String currentSessionId = (String) httpSession.getAttribute("id");
         if (adminId.equals(currentSessionId)) {
