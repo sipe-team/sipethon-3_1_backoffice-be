@@ -11,10 +11,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class AttendancePhaseReadView {
 
-    @Schema(description = "회차")
+    @Schema(description = "회차", example = "1")
     private final Integer phase;
 
-    @Schema(description = "날짜")
+    @Schema(description = "날짜", example = "2021-09-01")
     private final LocalDate date;
 
     public static AttendancePhaseReadView from(Integer phase, LocalDate date) {
