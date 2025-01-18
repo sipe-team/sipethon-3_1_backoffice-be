@@ -23,9 +23,6 @@ public class MemberService {
         return memberRepository.findById(memberId);
     }
 
-//    public List<Member> getMemberList(Long term, String name) {
-//    }
-
     public void updateMember(Long memberId, UpdateMemberRequest request) {
         Member member = getMember(memberId);
         member.updateMember(request.name(), request.field(), request.region(), request.birth(), request.email(), request.phone());
