@@ -7,10 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import team.sipe.office.modules.attendance.api.dto.request.QrCodeCreateRequest;
 import team.sipe.office.modules.attendance.api.dto.view.AttendancePhaseReadView;
+import team.sipe.office.modules.attendance.api.dto.view.PointHistoryView;
+import team.sipe.office.modules.attendance.api.dto.view.PointsReadView;
 import team.sipe.office.modules.attendance.application.AttendanceReadService;
 import team.sipe.office.modules.attendance.application.QrCodeGenerateService;
 import team.sipe.office.modules.attendance.application.command.PhaseReadCommand;
 import team.sipe.office.modules.attendance.application.dto.PhaseDto;
+import team.sipe.office.modules.attendance.application.dto.PointsDto;
 
 import java.util.List;
 
@@ -34,4 +37,17 @@ public class AttendanceApi {
     public ResponseEntity<byte[]> updateQrCode(@RequestBody QrCodeCreateRequest rq) {
         return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(qrCodeGenerateService.createQrCode(rq.toCommand()));
     }
+
+    @GetMapping("/points")
+    public ResponseEntity<PointsReadView> readPoints(@RequestParam("memberId") Long memberId,
+                                                     @RequestParam("term") Integer term) {
+        PointsDto dto = attendanceReadService.readPoints(memberId, term);
+        return ResponseEntity.ok().body(
+                PointsReadView.of(
+                        dto.getPoints(),
+                        dto.getMaxPoints(),
+                        dto.getPointHistories().stream().map(PointHistoryView::from).toList())
+        );
+    }
+
 }
