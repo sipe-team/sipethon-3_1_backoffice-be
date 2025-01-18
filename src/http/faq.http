@@ -1,0 +1,18 @@
+### FAQ 등록
+POST http://localhost:8080/api/faqs
+Content-Type: application/json
+
+{
+  "faqs": [
+    {
+      "seq": 1,
+      "question": "질문1",
+      "answer": "답변1"
+    },
+    {
+      "seq": 2,
+      "question": "질문2",
+      "answer": "답변2"
+    }
+  ]
+}
