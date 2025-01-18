@@ -19,7 +19,7 @@ public class Admin {
 
     public void login(final String password) {
         if (!this.password.equals(password)) {
-            throw new RuntimeException("Invalid password");
+            throw new RuntimeException("사용자 정보가 잘못 되었습니다.");
         }
     }
 

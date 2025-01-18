@@ -1,11 +1,9 @@
 package team.sipe.office.modules.admin.infrastructure.persistence;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.Comment;
 import team.sipe.office.global.jpa.BaseTimeEntity;
+import team.sipe.office.global.jpa.EncryptDecryptConverter;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -20,6 +18,7 @@ public class AdminEntity extends BaseTimeEntity {
 
     @Comment("관리자 비밀번호")
     @Column(name = "password", nullable = false)
+    @Convert(converter = EncryptDecryptConverter.class)
     private String password;
 
     public AdminEntity() {

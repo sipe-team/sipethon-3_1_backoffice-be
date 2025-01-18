@@ -56,4 +56,5 @@ management:
         include: prometheus
 office:
   health: true
+  secret-key: ${SECRET_KEY:abcdefghijkmnopq}
 
