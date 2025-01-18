@@ -3,6 +3,6 @@ POST http://localhost:8080/api/admin/auth/login
 Content-Type: application/json
 
 {
-  "id": "kwj1270",
-  "password": "password"
+  "id": "admin",
+  "password": "admin"
 }
