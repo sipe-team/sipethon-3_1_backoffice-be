@@ -58,7 +58,7 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
     - name: Update kubeconfig for EKS
       run: |
-        aws eks update-kubeconfig --name 01-conecta-qa --region ap-northeast-2
+        aws eks update-kubeconfig --name 01-conects-qa --region ap-northeast-2
     - name: Deploy to EKS
       run: |
         kubectl rollout restart deployments/conects-backoffice
