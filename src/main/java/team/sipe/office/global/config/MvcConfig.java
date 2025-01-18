@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import team.sipe.office.global.error.ApiExceptionResponse;
 import team.sipe.office.global.error.exception.AuthenticationException;
 import team.sipe.office.global.error.exception.ErrorCode;
@@ -16,12 +18,19 @@ import java.util.List;
 import java.util.Optional;
 
 @Configuration
-public class MvcConfig {
+public class MvcConfig implements WebMvcConfigurer {
 
     private final ObjectMapper objectMapper;
 
     public MvcConfig(final ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
+    }
+
+    @Override
+    public void addCorsMappings(final CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "POST", "PUT", "DELETE");
     }
 
     @Bean
@@ -33,14 +42,14 @@ public class MvcConfig {
         return registrationBean;
     }
 
-    @Bean
-    public FilterRegistrationBean<AuthenticationFilter> authenticationFilter() {
-        FilterRegistrationBean<AuthenticationFilter> registrationBean = new FilterRegistrationBean<>();
-        registrationBean.setFilter(new AuthenticationFilter());
-        registrationBean.addUrlPatterns("/*");
-        registrationBean.setOrder(2);
-        return registrationBean;
-    }
+//    @Bean
+//    public FilterRegistrationBean<AuthenticationFilter> authenticationFilter() {
+//        FilterRegistrationBean<AuthenticationFilter> registrationBean = new FilterRegistrationBean<>();
+//        registrationBean.setFilter(new AuthenticationFilter());
+//        registrationBean.addUrlPatterns("/*");
+//        registrationBean.setOrder(2);
+//        return registrationBean;
+//    }
 }
 
 class ErrorHandlingFilter implements Filter {

@@ -1,6 +1,8 @@
 ### 로그인
+// @no-cookie-jar
 POST http://localhost:8080/api/admin/auth/login
 Content-Type: application/json
+
 
 {
   "id": "admin",
