@@ -1,0 +1,53 @@
+server:
+  port: 8080
+  shutdown: graceful
+spring:
+  application:
+    name: office
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    url: '${DATASOURCE_HOST:jdbc:mysql://localhost:3306/office}'
+    username: '${DATASOURCE_USERNAME:root}'
+    password: '${DATASOURCE_PASSWORD:1234}'
+    driver-class-name: '${DATASOURCE_DRIVER:com.mysql.cj.jdbc.Driver}'
+springdoc:
+  version: '@project.version@'
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  show-actuator: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    operations-sorter: alpha
+    tags-sorter: alpha
+    disable-swagger-default-url: true
+    display-query-params-without-oauth2: true
+    doc-expansion: none
+  paths-to-match:
+    - /api/**
+  api-docs:
+    enabled: true
+management:
+  server:
+    port: 1${server.port}
+  endpoint:
+    prometheus:
+      access: read_only
+  endpoints:
+    access:
+      default: none
+    web:
+      base-path: /prefer
+      exposure:
+        exclude:
+        include: prometheus
+    jmx:
+      exposure:
+        exclude:
+        include: prometheus
+office:
+  health: true
+
