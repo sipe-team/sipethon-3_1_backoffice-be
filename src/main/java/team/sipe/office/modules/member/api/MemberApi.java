@@ -1,5 +1,6 @@
 package team.sipe.office.modules.member.api;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import team.sipe.office.modules.member.infrastructure.MemberDao;
 
 import java.util.List;
 
+@Tag(name = "회원")
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor

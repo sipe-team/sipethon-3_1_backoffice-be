@@ -1,5 +1,6 @@
 package team.sipe.office.modules.recruit.api;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import team.sipe.office.modules.recruit.api.dto.requirements.*;
@@ -10,6 +11,7 @@ import team.sipe.office.modules.recruit.infrastructure.RecruitRequirementDao;
 import java.net.URI;
 import java.util.List;
 
+@Tag(name = "지원")
 @RequestMapping("/api/recruit/requirement")
 @RestController
 public class RecruitRequirementApi {

@@ -1,5 +1,6 @@
 package team.sipe.office.modules.admin.api;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,7 @@ import team.sipe.office.modules.admin.api.dto.AdminLoginRequest;
 import team.sipe.office.modules.admin.application.AdminAuthService;
 import team.sipe.office.modules.admin.domain.Admin;
 
+@Tag(name = "관리자")
 @RequestMapping("/api/admin/auth")
 @RestController
 public class AdminAuthApi {

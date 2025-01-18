@@ -1,5 +1,6 @@
 package team.sipe.office.modules.activity.api;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import team.sipe.office.modules.activity.infrastructure.ActivityDao;
 
 import java.util.List;
 
+@Tag(name = "활동")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
