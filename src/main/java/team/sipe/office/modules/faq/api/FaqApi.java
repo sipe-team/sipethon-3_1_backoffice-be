@@ -1,5 +1,6 @@
 package team.sipe.office.modules.faq.api;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import team.sipe.office.modules.faq.api.dto.FaqFindAllResponse;
@@ -8,6 +9,7 @@ import team.sipe.office.modules.faq.api.dto.FaqsRegisterRequest;
 import team.sipe.office.modules.faq.appplication.FaqService;
 import team.sipe.office.modules.faq.infrastructure.persistence.FaqDao;
 
+@Tag(name = "FAQ")
 @RequestMapping("/api/faqs")
 @RestController
 public class FaqApi {
