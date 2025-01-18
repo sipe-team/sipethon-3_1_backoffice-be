@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class AttendanceCriteria extends BaseTimeEntity {
-    private Long term;
-    private Long phase;
+    private int term;
+    private int phase;
     private LocalDateTime startTime;
     private int lateMinute;
     private int absenceMinute;

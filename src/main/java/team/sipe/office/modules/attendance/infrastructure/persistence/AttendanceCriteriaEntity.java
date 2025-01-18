@@ -19,24 +19,24 @@ public class AttendanceCriteriaEntity extends BaseTimeEntity {
     @Id
     @EqualsAndHashCode.Include
     @Comment("기수")
-    @Column(name = "term")
-    private Long term;
+    @Column(name = "term", nullable = false)
+    private Integer term;
 
     @Id
     @EqualsAndHashCode.Include
     @Comment("회차")
-    @Column(name = "phase")
-    private Long phase;
+    @Column(name = "phase", nullable = false)
+    private Integer phase;
 
     @Comment("시작 시간")
-    @Column(name = "start_time")
+    @Column(name = "start_time", nullable = false)
     private LocalDateTime startTime;
 
     @Comment("지각 기준")
-    @Column(name = "late_minute")
-    private int lateMinute;
+    @Column(name = "late_minute", nullable = false)
+    private Integer lateMinute;
 
     @Comment("결석 기준")
-    @Column(name = "absence_minute")
-    private int absenceMinute;
+    @Column(name = "absence_minute", nullable = false)
+    private Integer absenceMinute;
 }
