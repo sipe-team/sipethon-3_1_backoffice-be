@@ -20,6 +20,7 @@ public class AdminDomainEntityMapper implements DomainEntityMapper<Admin, AdminE
 
     /**
      * 아직 사용하지 않는 메서드
+     *
      * @param admin
      * @return
      */
