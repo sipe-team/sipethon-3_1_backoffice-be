@@ -11,7 +11,8 @@ import team.sipe.office.modules.attendance.application.AttendanceCommandService;
 import team.sipe.office.modules.attendance.application.command.AttendanceCreateCommand;
 import team.sipe.office.modules.attendance.application.dto.SubmitDto;
 
-import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
@@ -37,7 +38,7 @@ public class AttendanceViewController {
                                    @RequestParam("phase") int phase,
                                    Model model) {
         try {
-            SubmitDto dto = attendanceCommandService.saveAttendance(new AttendanceCreateCommand(name, phoneNumber, term, phase, LocalDateTime.now()));
+            SubmitDto dto = attendanceCommandService.saveAttendance(new AttendanceCreateCommand(name, phoneNumber, term, phase, ZonedDateTime.now(ZoneId.of("Asia/Seoul")).toLocalDateTime()));
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy년 MM월 dd일 EEEE a h시 mm분 ss초", Locale.KOREAN);
 

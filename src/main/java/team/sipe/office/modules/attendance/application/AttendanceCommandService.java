@@ -38,7 +38,7 @@ public class AttendanceCommandService {
         PointType pointType = calculatePoint(criteria, cmd.submitTime());
         pointHistoryRepository.save(PointHistory.of(cmd.term(), cmd.phase(), member.getId(), pointType, pointType.getPoint(), ""));
 
-        LocalDateTime submitTime = attendanceRepository.save(Attendance.of(cmd.term(), cmd.phase(), member.getId(), LocalDateTime.now())).getAttendanceTime();
+        LocalDateTime submitTime = attendanceRepository.save(Attendance.of(cmd.term(), cmd.phase(), member.getId(), cmd.submitTime())).getAttendanceTime();
 
         return SubmitDto.of(pointType, submitTime);
     }
