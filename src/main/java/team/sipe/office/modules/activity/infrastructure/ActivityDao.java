@@ -18,12 +18,14 @@ public class ActivityDao {
         this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
-    public List<ActivityView> getActivityList() {
-        SqlParameterSource params = new MapSqlParameterSource();
+    public List<ActivityView> getActivityList(Integer term) {
+        SqlParameterSource params = new MapSqlParameterSource()
+                .addValue("term", term);
 
         String query = """
                 SELECT *
                 FROM activity
+                WHERE term = :term
                 """;
 
         return jdbcTemplate.query(query, params, new ActivityRowMapper());
