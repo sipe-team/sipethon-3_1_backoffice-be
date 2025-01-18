@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import team.sipe.office.modules.attendance.application.AttendanceCommandService;
 import team.sipe.office.modules.attendance.application.command.AttendanceCreateCommand;
+import team.sipe.office.modules.attendance.application.dto.SubmitDto;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -36,13 +37,14 @@ public class AttendanceViewController {
                                    @RequestParam("phase") int phase,
                                    Model model) {
         try {
-            LocalDateTime submitTime = attendanceCommandService.saveAttendance(new AttendanceCreateCommand(name, phoneNumber, term, phase));
+            SubmitDto dto = attendanceCommandService.saveAttendance(new AttendanceCreateCommand(name, phoneNumber, term, phase, LocalDateTime.now()));
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy년 MM월 dd일 EEEE a h시 mm분 ss초", Locale.KOREAN);
 
             model.addAttribute("name", name);
             model.addAttribute("phoneNumber", phoneNumber);
-            model.addAttribute("submitTime", submitTime.format(formatter));
+            model.addAttribute("submitType", dto.getPointType().getName());
+            model.addAttribute("submitTime", dto.getSubmitTime().format(formatter));
         }
         catch (Exception e) {
             model.addAttribute("error", e.getMessage());

@@ -6,7 +6,6 @@ import org.hibernate.annotations.Comment;
 import team.sipe.office.global.jpa.BaseTimeEntity;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @Getter
 @Entity
