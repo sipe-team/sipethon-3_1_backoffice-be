@@ -14,7 +14,8 @@ public record MemberDetailView(
         String email,
         String phone,
         String birth,
-        boolean isDropped
+        boolean isDropped,
+        String reason
 ) {
     public MemberDetailView(Member member) {
         this(member.getId(),
@@ -28,7 +29,8 @@ public record MemberDetailView(
                 member.getEmail(),
                 member.getPhone(),
                 member.getBirth(),
-                Objects.nonNull(member.getDropReason())
+                Objects.nonNull(member.getDropReason()),
+                member.getDropReason()
         );
     }
 }
