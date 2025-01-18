@@ -1,0 +1,6 @@
+### 세션 정보 있는 상태로 호출
+GET http://localhost:8080/api/test
+
+### 세션 정보 있는 상태로 호출(에러
+// @no-cookie-jar
+GET http://localhost:8080/api/test
