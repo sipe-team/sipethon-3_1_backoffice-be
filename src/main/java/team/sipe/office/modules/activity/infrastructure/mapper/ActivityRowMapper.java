@@ -11,7 +11,7 @@ public class ActivityRowMapper implements RowMapper<ActivityView> {
     @Override
     public ActivityView mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new ActivityView(
-                Integer.parseInt(rs.getString("week")),
+                Integer.parseInt(rs.getString("phase")),
                 rs.getString("date"),
                 rs.getString("description")
         );
