@@ -11,7 +11,7 @@ spring:
   jpa:
     generate-ddl: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
   datasource:
     url: '${DATASOURCE_HOST:jdbc:mysql://hakerton.cluster-cqhn8loawgfg.ap-northeast-2.rds.amazonaws.com:3306/office}'
     username: '${DATASOURCE_USERNAME:root}'
