@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class ActivityView {
-    private int week;
+    private int phase;
     private String date;
     private String description;
 }
