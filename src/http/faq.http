@@ -1,5 +1,5 @@
 ### FAQ 등록
-POST http://backoffice.conects.com/api/faqs
+POST http://localhost:8080/api/faqs
 Content-Type: application/json
 
 {
