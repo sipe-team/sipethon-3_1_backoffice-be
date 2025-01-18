@@ -26,8 +26,17 @@ public class AdminAuthApi {
             final HttpSession httpSession
     ) {
         final Admin admin = adminAuthService.login(request.command());
-        httpSession.setAttribute("id", admin.getId());
-        httpSession.setMaxInactiveInterval(24 * 60 * 60);
+        refreshSession(httpSession, admin.getId());
         return ResponseEntity.ok().build();
+    }
+
+    private void refreshSession(HttpSession httpSession, String adminId) {
+        final String currentSessionId = (String) httpSession.getAttribute("id");
+        if (adminId.equals(currentSessionId)) {
+            httpSession.setMaxInactiveInterval(24 * 60 * 60);
+            return;
+        }
+        httpSession.setAttribute("id", adminId);
+        httpSession.setMaxInactiveInterval(24 * 60 * 60);
     }
 }
