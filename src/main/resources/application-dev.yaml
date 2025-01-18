@@ -2,8 +2,6 @@ server:
   port: 8080
   shutdown: graceful
 spring:
-  profiles:
-    active: dev
   application:
     name: office
   session:
