@@ -84,7 +84,10 @@ class AuthenticationFilter implements Filter {
             "/swagger-ui/",
             "/view",
             "/v3/api-docs/",
-            "/v3/api-docs"
+            "/v3/api-docs",
+            "/prefer",
+            "/prefer/",
+            "favicon.ico"
     );
 
     @Override
