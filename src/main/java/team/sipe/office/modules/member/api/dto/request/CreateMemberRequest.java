@@ -20,11 +20,11 @@ public record CreateMemberRequest(
                 null,
                 name,
                 field,
-                field,
                 region,
+                birth,
                 email,
                 phone,
-                birth,
+                null,
                 List.of(new Term(null, term, false)),
                 LocalDateTime.now(),
                 LocalDateTime.now()
